@@ -9,7 +9,7 @@ void main() {
       theme: ThemeData(
         fontFamily: 'Poppins',
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',

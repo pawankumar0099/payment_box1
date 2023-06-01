@@ -18,6 +18,7 @@ class _CalculatorState extends State<Calculator> {
   String expression = "";
   double equationFontSize = 38.0;
   double resultFontSize = 48.0;
+  Color led = Colors.white70;
 
   //event handling and calculator logic
   buttonPressed(String buttonText) {
@@ -39,12 +40,21 @@ class _CalculatorState extends State<Calculator> {
         resultFontSize = 48.0;
       } else if (buttonText == "QR") {
         if (result == "0") {
-          print("hello");
           QrData.amount = equation;
         } else {
           QrData.amount = result;
         }
         Navigator.pushNamed(context, '/qr', arguments: QrData.getQrData());
+      } else if (buttonText == "LED") {
+        if(led == Colors.white70) {
+          led = Colors.green;
+        }
+        else{
+          led = Colors.white70;
+        }
+      } else if (buttonText == "LT") {
+      } else if (buttonText == "AT") {
+      } else if (buttonText == "BTN") {
       } else {
         equationFontSize = 48.0;
         resultFontSize = 38.0;
@@ -75,8 +85,8 @@ class _CalculatorState extends State<Calculator> {
   }
 
 //method to create button
-  Widget buildButton(String buttonText, double buttonHeight, Color buttonColor,
-      final buttonstyle) {
+  Widget buildButton(
+      String buttonText, double buttonHeight, Color buttonColor) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.1 * buttonHeight,
       child: ElevatedButton(
@@ -90,7 +100,8 @@ class _CalculatorState extends State<Calculator> {
           onPressed: () => buttonPressed(buttonText),
           child: Text(
             buttonText,
-            style: buttonstyle,
+            style:
+                const TextStyle(fontSize: 30.0, fontWeight: FontWeight.normal),
           )),
     );
   }
@@ -117,9 +128,9 @@ class _CalculatorState extends State<Calculator> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final style = theme.textTheme.displayMedium!.copyWith(
-      color: theme.colorScheme.onPrimary,
-    );
+    // final style = theme.textTheme.displayMedium!.copyWith(
+    //   color: theme.colorScheme.onPrimary,
+    // );
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.colorScheme.primaryContainer,
@@ -159,7 +170,12 @@ class _CalculatorState extends State<Calculator> {
                   child: Table(
                     children: [
                       TableRow(children: [
-                        buildButton("C", 1, theme.colorScheme.primary, style),
+                        buildButtonNum("LT", 1),
+                        buildButton("LED", 1, led),
+                        buildButtonNum("AT", 1),
+                      ]),
+                      TableRow(children: [
+                        buildButtonNum("C", 1),
                         buildButtonNum("⌫", 1),
                         buildButtonNum("÷", 1),
                       ]),
@@ -191,6 +207,9 @@ class _CalculatorState extends State<Calculator> {
                   child: Table(
                     children: [
                       TableRow(children: [
+                        buildButtonNum("BTN", 1),
+                      ]),
+                      TableRow(children: [
                         buildButtonNum("×", 1),
                       ]),
                       TableRow(children: [
@@ -208,6 +227,7 @@ class _CalculatorState extends State<Calculator> {
                           color: Theme.of(context).colorScheme.primary,
                           child: TextButton(
                               style: TextButton.styleFrom(
+                                backgroundColor: Colors.white,
                                 padding: const EdgeInsets.all(16.0),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(0.0),
@@ -219,7 +239,7 @@ class _CalculatorState extends State<Calculator> {
                               onPressed: () => buttonPressed("QR"),
                               child: const Icon(
                                 qr_code_scanner_rounded,
-                                color: Colors.white,
+                                color: Colors.black,
                                 size: 70.0,
                               )),
                         )
