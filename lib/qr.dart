@@ -49,7 +49,10 @@ class _QRState extends State<QR> {
                       side: const BorderSide(
                           color: Colors.white, width: 1, style: BorderStyle.solid)),
                 ),
-              onPressed: ()=> speak(TTS)
+              onPressed: ()=> {
+                  speak(TTS),
+                  Navigator.pushNamed(context, "/payemntstatus"),
+              }
             ,
               child: Text("click",style: TextStyle(color: Colors.black)),
             ),

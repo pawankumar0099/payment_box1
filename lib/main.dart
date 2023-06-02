@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:payment_box/qrdata.dart';
 import 'calculator.dart';
 import 'qr.dart';
+import 'payment_status.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -18,5 +19,6 @@ void main() {
         '/qr': (context) => QR(
               data: QrData.getQrData(),
             ),
+        '/payemntstatus': (context) => PaymentStatus(),
       }));
 }

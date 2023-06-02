@@ -18,7 +18,6 @@ class _CalculatorState extends State<Calculator> {
   String expression = "";
   double equationFontSize = 38.0;
   double resultFontSize = 48.0;
-  Color led = Colors.white70;
 
   //event handling and calculator logic
   buttonPressed(String buttonText) {
@@ -46,13 +45,8 @@ class _CalculatorState extends State<Calculator> {
         }
         Navigator.pushNamed(context, '/qr', arguments: QrData.getQrData());
       } else if (buttonText == "LED") {
-        if(led == Colors.white70) {
-          led = Colors.green;
         }
-        else{
-          led = Colors.white70;
-        }
-      } else if (buttonText == "LT") {
+       else if (buttonText == "LT") {
       } else if (buttonText == "AT") {
       } else if (buttonText == "BTN") {
       } else {
@@ -171,7 +165,7 @@ class _CalculatorState extends State<Calculator> {
                     children: [
                       TableRow(children: [
                         buildButtonNum("LT", 1),
-                        buildButton("LED", 1, led),
+                        buildButtonNum("LED", 1),
                         buildButtonNum("AT", 1),
                       ]),
                       TableRow(children: [
