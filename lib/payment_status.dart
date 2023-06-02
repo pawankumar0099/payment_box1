@@ -11,8 +11,10 @@ class PaymentStatus extends StatefulWidget {
 class _PaymentStatusState extends State<PaymentStatus> {
   @override
   Widget build(BuildContext context) {
+    final theme=Theme.of(context);
     return Scaffold(
         appBar: AppBar(title: Text("Payment Status"),
+          backgroundColor: theme.colorScheme.primaryContainer,
           centerTitle: true,
         ),
         body: Center(

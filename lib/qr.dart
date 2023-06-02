@@ -25,11 +25,13 @@ class _QRState extends State<QR> {
 
   @override
   Widget build(BuildContext context) {
+    final theme=Theme.of(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
         title: Text("Payment Box"),
+        backgroundColor: theme.colorScheme.primaryContainer,
       ),
       body: Center(
         child: Column(
