@@ -11,15 +11,18 @@ class PaymentStatus extends StatefulWidget {
 class _PaymentStatusState extends State<PaymentStatus> {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
-        appBar: AppBar(title: Text("Payment Status"),
-          centerTitle: true,
-        ),
-        body: Center(
-          child: Container(
-              child: Lottie.network("https://assets9.lottiefiles.com/packages/lf20_s3tatv3q.json")
-          ),
-        ),
+      appBar: AppBar(
+        title: Text("Payment Status"),
+        centerTitle: true,
+        backgroundColor: theme.colorScheme.primaryContainer,
+      ),
+      body: Center(
+        child: Container(
+            child: Lottie.network(
+                "https://assets9.lottiefiles.com/packages/lf20_s3tatv3q.json")),
+      ),
     );
   }
 }
